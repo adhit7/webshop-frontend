@@ -38,7 +38,7 @@ const ProductEditScreen = ({ match, history }) => {
       dispatch({ type: PRODUCT_UPDATE_RESET });
       history.push('/admin/productlist');
     } else {
-      if (!product.name || product._id !== productId) {
+      if (!product?.name || product?._id !== productId) {
         dispatch(listProductDetails(productId));
       } else {
         setName(product.name);
@@ -106,7 +106,7 @@ const ProductEditScreen = ({ match, history }) => {
           <Message variant='danger'>{error}</Message>
         ) : (
           <Form onSubmit={submitHandler}>
-            <Form.Group controlId='name'>
+            <Form.Group controlId='name' className='my-2'>
               <Form.Label>Name</Form.Label>
               <Form.Control
                 type='name'
@@ -116,7 +116,7 @@ const ProductEditScreen = ({ match, history }) => {
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group controlId='price'>
+            <Form.Group controlId='price' className='my-2'>
               <Form.Label>Price</Form.Label>
               <Form.Control
                 type='number'
@@ -126,7 +126,7 @@ const ProductEditScreen = ({ match, history }) => {
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group controlId='image'>
+            <Form.Group controlId='image' className='my-2'>
               <Form.Label>Image</Form.Label>
               <Form.Control
                 type='text'
@@ -134,16 +134,16 @@ const ProductEditScreen = ({ match, history }) => {
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
               ></Form.Control>
-              <Form.File
-                id='image-file'
+              <Form.Control
                 label='Choose File'
-                custom
                 onChange={uploadFileHandler}
-              ></Form.File>
+                type='file'
+                className='my-2'
+              ></Form.Control>
               {uploading && <Loader />}
             </Form.Group>
 
-            <Form.Group controlId='brand'>
+            <Form.Group controlId='brand' className='my-2'>
               <Form.Label>Brand</Form.Label>
               <Form.Control
                 type='text'
@@ -153,7 +153,7 @@ const ProductEditScreen = ({ match, history }) => {
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group controlId='countInStock'>
+            <Form.Group controlId='countInStock' className='my-2'>
               <Form.Label>Count In Stock</Form.Label>
               <Form.Control
                 type='number'
@@ -163,7 +163,7 @@ const ProductEditScreen = ({ match, history }) => {
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group controlId='category'>
+            <Form.Group controlId='category' className='my-2'>
               <Form.Label>Category</Form.Label>
               <Form.Control
                 type='text'
@@ -173,7 +173,7 @@ const ProductEditScreen = ({ match, history }) => {
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group controlId='description'>
+            <Form.Group controlId='description' className='my-2'>
               <Form.Label>Description</Form.Label>
               <Form.Control
                 type='text'

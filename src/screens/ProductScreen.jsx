@@ -183,7 +183,7 @@ const ProductScreen = ({ history, match }) => {
                   )}
                   {userInfo ? (
                     <Form onSubmit={submitHandler}>
-                      <Form.Group controlId='rating'>
+                      <Form.Group controlId='rating' className='my-2'>
                         <Form.Label>Rating</Form.Label>
                         <Form.Control
                           as='select'
@@ -198,7 +198,7 @@ const ProductScreen = ({ history, match }) => {
                           <option value='5'>5 - Excellent</option>
                         </Form.Control>
                       </Form.Group>
-                      <Form.Group controlId='comment'>
+                      <Form.Group controlId='comment' className='my-2'>
                         <Form.Label>Comment</Form.Label>
                         <Form.Control
                           as='textarea'

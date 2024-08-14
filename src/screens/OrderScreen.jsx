@@ -86,6 +86,8 @@ const OrderScreen = ({ match, history }) => {
     dispatch(deliverOrder(order));
   };
 
+  console.log('4', order);
+
   return loading ? (
     <Loader />
   ) : error ? (

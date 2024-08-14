@@ -16,18 +16,16 @@ const ProductCarousel = () => {
     dispatch(listTopProducts());
   }, [dispatch]);
 
-  return loading ? (
-    <Loader />
-  ) : error ? (
+  return loading ? null : error ? (
     <Message variant='danger'>{error}</Message>
   ) : (
-    <Carousel pause='hover' className='bg-dark'>
+    <Carousel pause='hover' className='bg-primary mb-4'>
       {products.map((product) => (
         <Carousel.Item key={product._id}>
           <Link to={`/product/${product._id}`}>
             <Image src={product.image} alt={product.name} fluid />
             <Carousel.Caption className='carousel-caption'>
-              <h2>
+              <h2 className='text-white text-right'>
                 {product.name} (${product.price})
               </h2>
             </Carousel.Caption>

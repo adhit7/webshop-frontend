@@ -32,7 +32,7 @@ const UserEditScreen = ({ match, history }) => {
       dispatch({ type: USER_UPDATES_RESET });
       history.push('/admin/userlist');
     } else {
-      if (!user.name || user._id !== userId) {
+      if (!user?.name || user?._id !== userId) {
         dispatch(getUserDetails(userId));
       } else {
         setName(user.name);
@@ -54,7 +54,6 @@ const UserEditScreen = ({ match, history }) => {
       </Link>
       <FormContainer>
         <h1>Edit User</h1>
-        {loadingUpdate && <Loader />}
         {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
         {loading ? (
           <Loader />
@@ -62,7 +61,7 @@ const UserEditScreen = ({ match, history }) => {
           <Message variant='danger'>{error}</Message>
         ) : (
           <Form onSubmit={submitHandler}>
-            <Form.Group controlId='name'>
+            <Form.Group controlId='name' className='my-2'>
               <Form.Label>Name</Form.Label>
               <Form.Control
                 type='name'
@@ -72,7 +71,7 @@ const UserEditScreen = ({ match, history }) => {
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group controlId='email'>
+            <Form.Group controlId='email' className='my-2'>
               <Form.Label>Email Address</Form.Label>
               <Form.Control
                 type='email'
@@ -82,7 +81,7 @@ const UserEditScreen = ({ match, history }) => {
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group controlId='isadmin'>
+            <Form.Group controlId='isadmin' className='my-2'>
               <Form.Check
                 type='checkbox'
                 label='Is Admin'
@@ -94,6 +93,7 @@ const UserEditScreen = ({ match, history }) => {
             <Button type='submit' variant='primary'>
               Update
             </Button>
+            {loadingUpdate && <Loader />}
           </Form>
         )}
       </FormContainer>

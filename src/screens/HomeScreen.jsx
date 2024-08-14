@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Image } from 'react-bootstrap';
 import Product from '../components/Product';
 import Loader from '../components/Loader';
 import Paginate from '../components/Paginate';
@@ -9,6 +9,8 @@ import ProductCarousel from '../components/ProductCarousel';
 import Message from '../components/Message';
 import Meta from '../components/Meta';
 import { listProducts } from '../actions/productActions';
+import Lottie from 'lottie-react';
+import notFound from '../assets/notFound.json';
 
 const HomeScreen = ({ match }) => {
   const keyword = match.params.keyword;
@@ -31,7 +33,7 @@ const HomeScreen = ({ match }) => {
       {!keyword ? (
         <ProductCarousel />
       ) : (
-        <Link to='/' className='btn btn-light'>
+        <Link to='/' className='btn btn-light mb-4'>
           Go Back
         </Link>
       )}
@@ -40,7 +42,7 @@ const HomeScreen = ({ match }) => {
         <Loader />
       ) : error ? (
         <Message variant='danger'>{error}</Message>
-      ) : (
+      ) : products?.length > 0 ? (
         <>
           <Row>
             {products.map((product) => (
@@ -55,6 +57,13 @@ const HomeScreen = ({ match }) => {
             keyword={keyword ? keyword : ''}
           />
         </>
+      ) : (
+        <Row
+          lg={2}
+          className='d-flex justify-content-center align-items-center'
+        >
+          <Lottie animationData={notFound} loop={true} />;
+        </Row>
       )}
     </>
   );
