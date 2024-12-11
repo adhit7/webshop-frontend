@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "proxy": "https://web-production-0d9f9.up.railway.app",
+  "proxy": "https://webshop-2wqm.onrender.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
